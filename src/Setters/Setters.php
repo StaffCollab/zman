@@ -12,7 +12,7 @@ trait Setters
      * @param  string $name
      * @return mixed
      */
-    public function __set(string $name, $value): mixed
+    public function __set(string $name, $value)
     {
         switch ($name) {
             case 'jewishDay':
