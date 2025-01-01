@@ -3,6 +3,7 @@
 namespace Zman;
 
 use Carbon\Carbon;
+use DateTimeInterface;
 use Zman\Moadim\Moadim;
 use Zman\Formats\Formats;
 use Zman\Getters\Getters;
@@ -48,7 +49,9 @@ class Zman extends Carbon
         parent::__construct($time, $tz);
 
         list(
-            $this->jdate['month'], $this->jdate['day'], $this->jdate['year']
+            $this->jdate['month'],
+            $this->jdate['day'],
+            $this->jdate['year']
         ) = explode('/', toJewish($this->month, $this->day, $this->year));
     }
 
@@ -59,12 +62,14 @@ class Zman extends Carbon
      *
      * @return static
      */
-    public static function instance($date)
+    public static function instance(DateTimeInterface $date): static
     {
         $instance = parent::instance($date);
 
         list(
-            $instance->jdate['month'], $instance->jdate['day'], $instance->jdate['year']
+            $instance->jdate['month'],
+            $instance->jdate['day'],
+            $instance->jdate['year']
         ) = explode('/', toJewish($instance->month, $instance->day, $instance->year));
 
         return $instance;
