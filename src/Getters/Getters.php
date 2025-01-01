@@ -30,7 +30,7 @@ trait Getters
      * @param  string $name
      * @return mixed
      */
-    public function __get($name)
+    public function __get(string $name): mixed
     {
         switch ($name) {
             case 'jewishMonth':
