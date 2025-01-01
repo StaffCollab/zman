@@ -72,7 +72,7 @@ trait Parsha
         // Until Adar everything goes in order
         // If it is a regular year the 4 are doubled
         $offset = 0;
-        $shabbos = $this->diffInWeeks($shabbosBereishis->addDay()) + 1;
+        $shabbos = abs($this->diffInWeeks($shabbosBereishis->addDay())) + 1;
 
         $p = static::firstDayOfPesach($this->jewishYear);
         if ($this->gt($p)) {
@@ -87,7 +87,7 @@ trait Parsha
             $offset += $shabbos > 29 ? 1 : 0;
 
             if ($shabbos === 21 || $shabbos === 26 || $shabbos === 27 || $shabbos === 29) {
-                return $this->parshios($shabbos + $offset).' - '.$this->parshios($shabbos + $offset + 1);
+                return $this->parshios($shabbos + $offset) . ' - ' . $this->parshios($shabbos + $offset + 1);
             }
         }
 
@@ -97,7 +97,7 @@ trait Parsha
             $offset += $shabbos > 36 ? 1 : 0;
 
             if ($shabbos === 36) {
-                return $this->parshios($shabbos + $offset).' - '.$this->parshios($shabbos + $offset + 1);
+                return $this->parshios($shabbos + $offset) . ' - ' . $this->parshios($shabbos + $offset + 1);
             }
         }
 
@@ -108,7 +108,7 @@ trait Parsha
 
         if ($together) {
             if ($this->parshios($shabbos + $offset, 'english') === 'Matos') {
-                return $this->parshios($shabbos + $offset).' - '.$this->parshios($shabbos + $offset + 1);
+                return $this->parshios($shabbos + $offset) . ' - ' . $this->parshios($shabbos + $offset + 1);
             }
             $offset += $shabbos + $offset > 40 ? 1 : 0;
         }
@@ -130,7 +130,7 @@ trait Parsha
 
         if ($count < 2) {
             if ($this->parshios($shabbos + $offset, 'english') === 'Nitzavim') {
-                return $this->parshios($shabbos + $offset).' - '.$this->parshios($shabbos + $offset + 1);
+                return $this->parshios($shabbos + $offset) . ' - ' . $this->parshios($shabbos + $offset + 1);
             } else {
                 $offset += $shabbos > 46 ? 1 : 0;
             }
