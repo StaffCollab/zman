@@ -11,6 +11,7 @@ use Zman\Setters\Setters;
 use Zman\Tefilos\Tefilos;
 use Zman\Helpers\LeapYears;
 use Zman\Helpers\DaysOfTheWeek;
+use Zman\Helpers\HebrewDateArithmetic;
 
 class Zman extends Carbon
 {
@@ -21,6 +22,7 @@ class Zman extends Carbon
     use Tefilos;
     use LeapYears;
     use DaysOfTheWeek;
+    use HebrewDateArithmetic;
 
     /**
      * The instance's jewish date.
