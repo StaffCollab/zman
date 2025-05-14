@@ -15,6 +15,7 @@ trait HebrewDateArithmetic
         $month = $this->jdate['month'];
         $year = $this->jdate['year'];
         $day = $this->jdate['day'] === 30 ? 29 : $this->jdate['day'];
+        $time = $this->toTimeString();
 
         while ($months > 0) {
             if ($month < 13) {
@@ -40,7 +41,7 @@ trait HebrewDateArithmetic
             if ($month === 6 && !isJewishLeapYear($year)) $month = 5;
         }
 
-        return static::createFromJewishDate($year, $month, $day);
+        return static::createFromJewishDate($year, $month, $day)->setTimeFromTimeString($time);
     }
 
     /**
@@ -65,10 +66,11 @@ trait HebrewDateArithmetic
         $year = $this->jdate['year'] + $years;
         $month = $this->jdate['month'];
         $day = $this->jdate['day'] === 30 ? 29 : $this->jdate['day'];
+        $time = $this->toTimeString();
 
         if ($month === 6 && !isJewishLeapYear($year)) $month = 7;
 
-        return static::createFromJewishDate($year, $month, $day);
+        return static::createFromJewishDate($year, $month, $day)->setTimeFromTimeString($time);
     }
 
     /**
